@@ -1,0 +1,734 @@
+/* 
+ This is the definitive way to load fonts into your
+ web pages. There are a bunch of different urls here for each font
+ type. Different browsers support different font file types, so we 
+ should make sure that we have a font file type for each browser 
+ that our users may encounter.
+
+ Q: How do I get all of the different font file types?
+ A: You can use a tool like https://transfonter.org/ to 
+    generate your missing types from one source type. 
+
+ Q: OK, so how do I use a font after I've imported it?
+ A: Just call on it by the name that you've given it.
+    Example:
+      .hello-world > span {
+        font-family: 'LemonMilk';
+      }
+
+    You'll notice I've changed the html and body's fonts for you
+    as an example. You can change it back.
+  
+  Q: Why is my font not loading?
+  A: Because the font is actually being loaded from a location on
+     your hard drive, that implies that it needs to be "served" to
+     the browser. Serve. Web server. You need to be running a Web
+     Server to serve this web page (html file) and other files.
+
+     My favourite way to do this is to just install Node.js, 
+     confirm it's installed by running "node -v", then, navigate
+     to this project's root folder and type:
+
+     npm install -g live-server && live-server --port=9000
+
+     You should now have a web server running serving this project's
+     files on port 9000. Visit "localhost:9000" in your browser to see
+     the changes. (Hint: it will also update when you make live changes).
+*/
+
+/* 
+  Loading fonts.
+ */
+
+@font-face {
+  font-family: 'BrownB';  /* Give it a name, you can choose this. */
+  src: url('assets/fonts/brown/Brown-Bold.eot'); /* IE9 Compat Modes */
+  src: url('assets/fonts/brown/Brown-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('assets/fonts/brown/Brown-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+       url('assets/fonts/brown/Brown-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+       url('assets/fonts/brown/Brown-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('assets/fonts/brown/Brown-Bold.svg#Brown-Bold') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'BrownBI';  /* Give it a name, you can choose this. */
+  src: url('assets/fonts/brown/Brown-BoldItali.eot'); /* IE9 Compat Modes */
+  src: url('assets/fonts/brown/Brown-BoldItali.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('assets/fonts/brown/Brown-BoldItali.woff2') format('woff2'), /* Super Modern Browsers */
+       url('assets/fonts/brown/Brown-BoldItali.woff') format('woff'), /* Pretty Modern Browsers */
+       url('assets/fonts/brown/Brown-BoldItali.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('assets/fonts/brown/Brown-BoldItali.svg#Brown-BoldItali') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'BrownR';  /* Give it a name, you can choose this. */
+  src: url('assets/fonts/brown/Brown-Regular.eot'); /* IE9 Compat Modes */
+  src: url('assets/fonts/brown/Brown-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('assets/fonts/brown/Brown-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('assets/fonts/brown/Brown-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+       url('assets/fonts/brown/Brown-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('assets/fonts/brown/Brown-Regular.svg#Brown-Regular') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'BrownI';  /* Give it a name, you can choose this. */
+  src: url('assets/fonts/brown/Brown-Itali.eot'); /* IE9 Compat Modes */
+  src: url('assets/fonts/brown/Brown-Itali.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('assets/fonts/brown/Brown-Itali.woff2') format('woff2'), /* Super Modern Browsers */
+       url('assets/fonts/brown/Brown-Itali.woff') format('woff'), /* Pretty Modern Browsers */
+       url('assets/fonts/brown/Brown-Itali.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('assets/fonts/brown/Brown-Itali.svg#Brown-Itali') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'BrownL';  /* Give it a name, you can choose this. */
+  src: url('assets/fonts/brown/Brown-Light.eot'); /* IE9 Compat Modes */
+  src: url('assets/fonts/brown/Brown-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('assets/fonts/brown/Brown-Light.woff2') format('woff2'), /* Super Modern Browsers */
+       url('assets/fonts/brown/Brown-Light.woff') format('woff'), /* Pretty Modern Browsers */
+       url('assets/fonts/brown/Brown-Light.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('assets/fonts/brown/Brown-Light.svg#Brown-Light') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'NoeB';  /* Give it a name, you can choose this. */
+  src: url('assets/fonts/noe/NoeDisplay-Bold.eot'); /* IE9 Compat Modes */
+  src: url('assets/fonts/noe/NoeDisplay-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('assets/fonts/noe/NoeDisplay-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+       url('assets/fonts/noe/NoeDisplay-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+       url('assets/fonts/noe/NoeDisplay-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('assets/fonts/noe/NoeDisplay-Bold.svg#NoeDisplay-Bold') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'NoeBI';  /* Give it a name, you can choose this. */
+  src: url('assets/fonts/noe/NoeDisplay-BoldItalic.eot'); /* IE9 Compat Modes */
+  src: url('assets/fonts/noe/NoeDisplay-BoldItalic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('assets/fonts/noe/NoeDisplay-BoldItalic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('assets/fonts/noe/NoeDisplay-BoldItalic.woff') format('woff'), /* Pretty Modern Browsers */
+       url('assets/fonts/noe/NoeDisplay-BoldItalic.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('assets/fonts/noe/NoeDisplay-BoldItalic.svg#NoeDisplay-BoldItalic') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'NoeR';  /* Give it a name, you can choose this. */
+  src: url('assets/fonts/noe/NoeDisplay-Regular.eot'); /* IE9 Compat Modes */
+  src: url('assets/fonts/noe/NoeDisplay-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('assets/fonts/noe/NoeDisplay-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('assets/fonts/noe/NoeDisplay-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+       url('assets/fonts/noe/NoeDisplay-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('assets/fonts/noe/NoeDisplay-Regular.svg#NoeDisplay-Regular') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'NoeRI';  /* Give it a name, you can choose this. */
+  src: url('assets/fonts/noe/NoeDisplay-RegularItalic.eot'); /* IE9 Compat Modes */
+  src: url('assets/fonts/noe/NoeDisplay-RegularItalic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('assets/fonts/noe/NoeDisplay-RegularItalic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('assets/fonts/noe/NoeDisplay-RegularItalic.woff') format('woff'), /* Pretty Modern Browsers */
+       url('assets/fonts/noe/NoeDisplay-RegularItalic.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('assets/fonts/noe/NoeDisplay-RegularItalic.svg#NoeDisplay-RegularItalic') format('svg'); /* Legacy iOS */
+}
+
+html, body {
+  font-family: 'BrownL', sans-serif; 
+  font-size: 16px;
+  color: #4A4A4A;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: 'NoeB', serif;
+  font-size: 30px;
+  color: #4A4A4A;
+}
+
+h2 {
+  font-family: 'BrownR', sans-serif;
+  font-size: 29px;
+  color: #4A4A4A;
+}
+
+h3 {
+  font-family: 'BrownL', sans-serif;
+  font-size: 20px;
+  color: #4A4A4A;
+}
+
+h4 {
+  font-family: 'BrownR', sans-serif;
+  font-size: 19px;
+  color: #4A4A4A;
+}
+
+h5 {
+  font-family: 'NoeRI', serif;
+  font-size: 24px;
+  color: #4A4A4A;
+  line-height: 33px;
+}
+
+h6 {
+  padding-bottom: 20px;
+  font-size: 13px;
+  line-height: 15px;
+  color: #8e8e8e;
+}
+
+p {
+  font-family: 'BrownL', sans-serif;
+  font-size: 16px;
+  line-height: 25px;
+  margin-top:0px;
+  padding-top: 0px;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.2 ease-in;
+  color: #f28500;
+}
+
+.home-container {
+    padding: 5%;
+    padding-top: 3%;
+    padding-left: 8%;
+    padding-right: 8%;
+    padding-bottom: 0%;
+}
+
+.home-container-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.spinner {
+  display: inline-block;
+}
+
+.spinner img {
+    width: 27%;
+    transition: 0.3s ease-in-out;
+    transform-origin: center;
+    animation-name: spin;
+    animation-duration: 10000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    /* height: 160px; */
+    /* height: 25%; */
+}
+
+.nav {
+  display: inline-block;
+
+}
+
+.nav a {
+  text-decoration: none;
+  color: #313131; 
+  font-size: 16px;
+}
+.nav a:hover {
+  transition: 2.0 ease-in;
+  color: #f28500;
+}
+
+.skiptonav a {
+
+}
+
+.skiptonav a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  padding-left: 20px;
+}
+li {
+  text-decoration: none;
+  text-indent: none;
+}
+
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+.hello {
+    max-width: 680px;
+    margin: 0 auto;
+    margin-top: 91px;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 110px;
+}
+
+.name {
+  text-transform: uppercase;
+}
+
+.description {}
+.special {
+  color: #eea922;
+}
+
+.sub {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+/*
+ * Case Studies
+ */
+
+.case-studies {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.case-study-wrapper {
+    height: 300px;
+    width: 20%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 50%;
+    cursor: pointer;
+}
+
+.case-study {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 50%;
+    cursor: pointer;
+}
+
+.case-study-wrapper:nth-of-type(1),
+.case-study-wrapper:nth-of-type(1) .case-study {
+  background-image: url(assets/static/static1.PNG);
+}
+
+.case-study-wrapper:nth-of-type(2),
+.case-study-wrapper:nth-of-type(2) .case-study {
+  background-image: url(assets/static/static2.PNG);
+}
+
+.case-study-wrapper:nth-of-type(3),
+.case-study-wrapper:nth-of-type(3) .case-study {
+  background-image: url(assets/static/static3.PNG);
+}
+
+.case-study-wrapper:nth-of-type(4),
+.case-study-wrapper:nth-of-type(4) .case-study {
+  background-image: url(assets/static/static4.PNG);
+}
+
+.case-study-wrapper:nth-of-type(5),
+.case-study-wrapper:nth-of-type(5) .case-study {
+  background-image: url(assets/static/static5.PNG);
+}
+
+/* 
+ * Case Studies Pages
+ */
+
+.case-study-header-container {
+    padding-top: 4.5em;
+    max-width: 700px;
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-bottom: 4.5em;
+}
+
+.case-study-title {
+    text-transform: none;
+    margin-bottom: 12px;
+    font-size: 2em;
+}
+
+.case-study-description {
+  margin-bottom: 1.4em;
+      font-size: 18px;
+}
+
+.case-study-meta {
+      font-family: 'BrownL';
+      font-size: 13px;
+      color: #8e8e8e;
+}
+
+/* .case-study-big-img {
+    background-color: #f6b000;
+    height: 100%;
+    width: 100%;
+} */
+
+.case-study-big-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.case-study-big-image-1 { background-image: url(assets/casestudies/1/big.jpg); }
+.case-study-big-image-2 { background-image: url(assets/casestudies/2/big.jpg); }
+.case-study-big-image-3 { background-image: url(assets/casestudies/3/big.jpg); }
+.case-study-big-image-4 { background-image: url(assets/casestudies/4/big.jpg); }
+.case-study-big-image-5 { background-image: url(assets/casestudies/5/big.jpg); }
+
+
+.case-study-inner-margin {
+    padding-left: 17%;
+    padding-right: 17%;
+    /* padding-bottom: 10%; */
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 4.5em;
+}
+
+.case-study-prose {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 4.5em;
+}
+.case-study-prose > div {
+      width: 50%;
+}
+
+.case-study-prose-left h2 {
+  font-weight: 300;
+}
+
+.case-study-prose-left div {
+}
+
+.case-study-prose-long-image {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 50%;
+    cursor: pointer;
+
+}
+.case-study-prose-long-image-right {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 50%;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-left: 25px;
+
+}
+
+.case-study-prose-right {
+    padding-left: 25px;
+}
+
+.case-study-prose-right img {
+    max-height: 670px;
+    width: 100%;
+    padding-top: 10px;
+}
+
+.case-study-prose-right video {
+    max-height: 670px;
+    width: 100%;
+    padding-top: 10px;
+}
+
+.case-study-prose-long-image-caption {
+    font-size: 12px;
+    margin-top: 30px;
+
+}
+
+.case-study-third {
+    padding-top: 0px;
+    padding-bottom: 4.5em;
+    width:100%;
+}
+
+.case-study-third img {
+  width: 100%;
+
+}
+
+.case-study-fourth {
+    padding-bottom: 4.5em;
+    display: flex;
+    flex-direction: row;
+}
+
+.case-study-fourth h2 {
+  font-size: 27px;
+}
+
+.case-study-fourth > div {
+    width: 50%;
+}
+
+.case-study-fifth {
+    padding-top: 0px;
+    padding-bottom: 4.5em;
+    width:100%;
+}
+
+.case-study-fifth img {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.case-study-grid {
+  padding-top: 0px;
+  padding-bottom: 4.5em;
+}
+.case-study-grid .row {
+      display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.case-study-grid-item {
+background-color: #ffffff;
+    height: 50%;
+    /* margin: 13px; */
+    width: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.case-study-grid-item-phone {
+    height: 600px;
+}
+.case-study-grid-item:nth-child(1) {
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+
+.case-study-grid-item:nth-child(2) {
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+.case-study-grid-item:nth-child(3) {
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.case-study-grid-item:nth-child(4) {
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.case-study-grid-thirds-item {
+background-color: #ffffff;
+    height: 600px;
+    /* margin: 13px; */
+    width: 33.33%;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+}
+.case-study-grid-item:nth-child(1) {
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+
+.case-study-grid-item:nth-child(2) {
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+.case-study-grid-item:nth-child(3) {
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.case-study-grid-item:nth-child(4) {
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.case-study-grid-item-1 { background-image: url(assets/casestudies/1/grid-1.png); }
+.case-study-grid-item-2 { background-image: url(assets/casestudies/1/grid-2.png); }
+.case-study-grid-item-3 { background-image: url(assets/casestudies/1/grid-3.png); }
+.case-study-grid-item-4 { background-image: url(assets/casestudies/1/grid-4.png); }
+.case-study-grid-item-5 { background-image: url(assets/casestudies/1/grid-5.png); }
+.case-study-grid-item-6 { background-image: url(assets/casestudies/1/grid-6.png); }
+.case-study-grid-item-7 { background-image: url(assets/casestudies/1/grid-7.png); }
+.case-study-grid-item-8 { background-image: url(assets/casestudies/1/grid-8.png); }
+.case-study-grid-item-9 { background-image: url(assets/casestudies/1/grid-9.png); }
+
+.case-study-grid-item-11 { background-image: url(assets/casestudies/3/grid-1.png); }
+.case-study-grid-item-12 { background-image: url(assets/casestudies/3/grid-2.png); }
+.case-study-grid-item-13 { background-image: url(assets/casestudies/3/grid-3.png); }
+.case-study-grid-item-14 { background-image: url(assets/casestudies/3/grid-4.png); }
+.case-study-grid-item-15 { background-image: url(assets/casestudies/3/grid-5.png); }
+.case-study-grid-item-16 { background-image: url(assets/casestudies/3/grid-6.png); }
+
+.case-study-grid-item-17 { background-image: url(assets/casestudies/2/1.jpg); }
+.case-study-grid-item-18 { background-image: url(assets/casestudies/2/2.jpg); }
+.case-study-grid-item-19 { background-image: url(assets/casestudies/2/3.jpg); }
+.case-study-grid-item-20 { background-image: url(assets/casestudies/2/4.jpg); }
+.case-study-grid-item-21 { background-image: url(assets/casestudies/2/5.jpg); }
+.case-study-grid-item-22 { background-image: url(assets/casestudies/2/6.jpg); }
+
+.case-study-grid-item-23 { background-image: url(assets/casestudies/4/1.jpg); }
+.case-study-grid-item-24 { background-image: url(assets/casestudies/4/2.jpg); }
+.case-study-grid-item-25 { background-image: url(assets/casestudies/4/3.jpg); }
+.case-study-grid-item-26 { background-image: url(assets/casestudies/4/4.jpg); }
+.case-study-grid-item-27 { background-image: url(assets/casestudies/4/5.jpg); }
+.case-study-grid-item-28 { background-image: url(assets/casestudies/4/6.jpg); }
+.case-study-grid-item-29 { background-image: url(assets/casestudies/4/7.jpg); }
+.case-study-grid-item-30 { background-image: url(assets/casestudies/4/8.jpg); }
+.case-study-grid-item-31 { background-image: url(assets/casestudies/4/9.jpg); }
+.case-study-grid-item-32 { background-image: url(assets/casestudies/4/10.jpg); }
+.case-study-grid-item-33 { background-image: url(assets/casestudies/4/11.jpg); }
+.case-study-grid-item-34 { background-image: url(assets/casestudies/4/12.jpg); }
+
+.case-study-grid-item-35 { background-image: url(assets/casestudies/1/attempt1.mp4); }
+.case-study-grid-item-36 { background-image: url(assets/casestudies/1/attempt2.mp4); }
+.case-study-grid-item-37 { background-image: url(assets/casestudies/1/attempt3.mp4); }
+
+.row img {
+  width: 50%;
+}
+
+/*
+ Footer  
+ */
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    height: 48px;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 0px;
+}
+
+.footer-item {
+
+}
+
+.footer-item a {
+    text-decoration: none;
+    color: #313131;
+    font-size: 18px;
+    transition: 0.2 ease-in;
+}
+
+.footer-item a:hover {
+  transition: 2.0 ease-in;
+  color: #f28500;
+}
+
+.footer-item a:active {
+  color: #f6b000;
+}
+
+.footer-item a:nth-child(2) {
+  display: none;
+}
+
+.current a {
+    color: #a6a6a6;
+    text-decoration: underline;
+}
+
+@media (max-width:1100px) {
+  .case-studies {
+    flex-direction: column;
+  }
+
+  .case-study-wrapper, .case-study {
+    width: 100%;
+  }
+}
+
+@media (max-width: 930px) {
+  .case-study-grid .row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .case-study-grid-item {
+    width: 100%;
+  }
+
+   .case-study-grid-thirds-item {
+    width: 100%;
+  }
+
+  .case-study-grid-item {
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 10px !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .case-study-prose {
+    flex-direction: column;
+  }
+
+  .case-study-prose-right {
+    padding: 0;
+  }
+
+  .case-study-prose-right img {
+    max-height: unset; 
+    width: 100%;
+    margin-top: 33px;
+  }
+
+    .case-study-prose-right video {
+    max-height: unset; 
+    width: 100%;
+    margin-top: 33px;
+  }
+
+  .case-study-fourth {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .case-study-fourth > div {
+    width: 100%;
+  }
+
+  .case-study-prose > div {
+    width: 100%;
+  }
+  
+  .case-study-fourth h2 {
+    margin-bottom: 19px;
+  }
+
+  .footer-item a:nth-child(1) {
+    display: none;
+  }
+
+  .footer-item a:nth-child(2) {
+    display: block;
+  }
+}
